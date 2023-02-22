@@ -1,0 +1,3 @@
+<div *ngFor="let expense of expenses">
+    <app-expense-item [expense]="expense" (expenseDelete)="deleteExpense($event)"></app-expense-item>
+</div>
