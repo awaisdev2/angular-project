@@ -8,28 +8,16 @@ import { Expense } from '../../expense';
 }) 
 export class ExpensesComponent implements OnInit {
   
+  localItem: string;
   expenses:Expense[];
   constructor() {
-    this.expenses = [
-      {
-        sno: 1,
-        title: 'this is title',
-        desc: 'description',
-        active: true
-      },
-      {
-        sno: 2,
-        title: 'this is title2',
-        desc: 'description',
-        active: true
-      },
-      {
-        sno: 3,
-        title: 'this is title3',
-        desc: 'description',
-        active: true
-      }
-    ]
+    this.localItem = localStorage.getItem("expenses");
+    if(this.localItem == null){
+      this.expenses = [  ];
+    }
+    else{
+      this.expenses = JSON.parse(this.localItem);
+  }
    }
 
   ngOnInit(): void {
@@ -37,7 +25,13 @@ export class ExpensesComponent implements OnInit {
   deleteExpense(expense: Expense){
     console.log(expense); 
     const index = this.expenses.indexOf(expense);
-    this.expenses.splice(index, 1)
+    this.expenses.splice(index, 1);
+    localStorage.setItem("expenses", JSON.stringify(this.expenses));
+  }
+  addExpense(expense: Expense){ 
+    console.log(expense); 
+    this.expenses.push(expense)
+    localStorage.setItem("expenses", JSON.stringify(this.expenses));
   }
 
 }

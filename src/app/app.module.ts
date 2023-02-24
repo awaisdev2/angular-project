@@ -6,17 +6,19 @@ import { AppComponent } from './app.component';
 import { ExpensesComponent } from './Myexpense/expenses/expenses.component';
 import { ExpenseItemComponent } from './Myexpense/expense-item/expense-item.component';
 import { AddExpenseComponent } from './Myexpense/add-expense/add-expense.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ExpensesComponent,
     ExpenseItemComponent,
-    AddExpenseComponent
+    AddExpenseComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,10 @@
-<div *ngFor="let expense of expenses">
-    <app-expense-item [expense]="expense" (expenseDelete)="deleteExpense($event)"></app-expense-item>
+<app-add-expense (expenseAdd)="addExpense($event)"></app-add-expense>
+<div class="px-4">
+    <h4 class="px-4">Your Expenses</h4>
+    <div class="px-4" *ngIf="this.expenses.length===0; else elseBlock">No Expenses to display</div>
+    <ng-template #elseBlock>
+        <div *ngFor="let expense of expenses">
+            <app-expense-item [expense]="expense" (expenseDelete)="deleteExpense($event)"></app-expense-item>
+        </div>
+    </ng-template>
 </div>
